@@ -26,7 +26,9 @@ class UserController extends Controller
             return $users;
 
         } catch (Exception $e) {
-            $resultCode = $e->getCode();
+            $resultCode = ($e->getCode() > 0)
+                ? $e->getCode()
+                : Response::HTTP_NOT_FOUND;
 
             $result = [
                 "message" => __('messages.not_found', ['model' => 'Users']),
@@ -47,7 +49,9 @@ class UserController extends Controller
             return $user;
 
         } catch (Exception $e) {
-            $resultCode = $e->getCode();
+            $resultCode = ($e->getCode() > 0)
+                ? $e->getCode()
+                : Response::HTTP_NOT_FOUND;
 
             $result = [
                 "message" => __('messages.store_error', ['model' => 'User']),
@@ -68,7 +72,9 @@ class UserController extends Controller
             return $user;
 
         } catch (Exception $e) {
-            $resultCode = $e->getCode();
+            $resultCode = ($e->getCode() > 0)
+                ? $e->getCode()
+                : Response::HTTP_NOT_FOUND;
 
             $result = [
                 "message" => __('messages.not_found', ['model' => 'User']),
@@ -89,7 +95,9 @@ class UserController extends Controller
             return $user;
 
         } catch (Exception $e) {
-            $resultCode = $e->getCode();
+            $resultCode = ($e->getCode() > 0)
+                ? $e->getCode()
+                : Response::HTTP_NOT_FOUND;
 
             $result = [
                 "message" => __('messages.update_error', ['model' => 'User']),
@@ -110,7 +118,9 @@ class UserController extends Controller
             $result = ["message" => __('messages.destroy', ['model' => 'User'])];
 
         } catch (Exception $e) {
-            $resultCode = $e->getCode();
+            $resultCode = ($e->getCode() > 0)
+                ? $e->getCode()
+                : Response::HTTP_NOT_FOUND;
 
             $result = [
                 "message" => __('messages.destroy_error', ['model' => 'User']),

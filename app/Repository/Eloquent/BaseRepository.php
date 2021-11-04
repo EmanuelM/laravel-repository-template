@@ -5,6 +5,7 @@ namespace App\Repository\Eloquent;
 use App\Repository\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BaseRepository implements EloquentRepositoryInterface
 {
@@ -56,7 +57,7 @@ class BaseRepository implements EloquentRepositoryInterface
         array $relations = [],
         array $filters = [],
         int $perPage = 15
-    ): Collection {
+    ): LengthAwarePaginator {
         $query = $this->model->with($relations);
 
         if (count($filters) > 0) {

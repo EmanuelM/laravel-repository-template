@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface EloquentRepositoryInterface
 {
@@ -26,7 +27,7 @@ interface EloquentRepositoryInterface
      * @param int $perPage
      * @return Collection
      */
-    public function paginate(array $columns = ['*'], array $relations = [], array $filters = [], int $perPage = 15): Collection;
+    public function paginate(array $columns = ['*'], array $relations = [], array $filters = [], int $perPage = 15): LengthAwarePaginator;
 
     /**
      * Get all trashed models.
